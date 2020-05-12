@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Crowd Count Prediction using PyTorch</title>
+    <style media="screen">
+
+      
+
+        #container {
+            margin-left: auto;
+            margin-right: auto;
+            width: 500px;
+        }
+
+        div {
+          
+          height: 180px;
+          
+          
+          align-content: center;
+        }
+
+        h1 {
+            color: rgba(11, 47, 57, 0.85);
+            font-family: "Arial Black";
+            padding-bottom: 3px;
+        }
+
+        p {
+          color: rgba(0, 0, 0, 0.79);
+          font-family: "Arial Black";
+        }
+
+        #Line {
+            border-top: thin #f23165;
+            width: 20px;
+            padding-bottom: 5px;
+        }
+
+        #custom-button {
+            font-family: Arial;
+            margin: 5px;
+            padding: 10px;
+            color: white;
+            background-color: #3fc1c1;
+            border: #FFFFFF;
+            border-radius: 5px;
+            cusor: pointer;
+        }
+
+        #custom-button:hover {
+            background-color: #44dfdf;
+        }
+
+        #custom-text {
+            font-family: sans-serif;
+            color: #44dfdf;
+        }
+
+        #choose-text {
+          margin-left: 5px;
+          font-family: sans-serif;
+          color: #aaa;
+        }
+
+
+
+        .gradient-button  {
+            font-family: Arial;
+            margin: 5px;
+
+            padding: 10px;
+            color: white;
+            background-color: #3fc1c1;
+            border: #FFFFFF;
+            border-radius: 5px;
+            cusor: pointer;
+        }
+
+        .gradient-button:hover {
+            margin: 8px 10px 12px;
+            background-color: #44dfdf;
+        }
+
+        .gradient-button-1 {background-image: linear-gradient(to right, #3fc1c1 0%, #f23165 51%, #3fc1c1 100%)}
+        .gradient-button-1:hover { background-position: right center; }
+
+    </style>
+  </head>
+
+  <body class="text-center" style="background-color:beige;">
+
+<!--   <div align="center" id="logo">
+        <img src="/static/theLogo.png" alt="Logo" height="300" width="300">
+  </div>
+ -->
+  <div align="center" id="container">
+      <h1 class="h3 mb-3 font-weight-normal" id="mainTitle">Crowd Counting using CSRNet</h1>
+      <div id="Line">
+      </div>
+      
+      <form method=post enctype=multipart/form-data>
+
+        <p><b>Upload the image of crowd</b></p>
+        <input type="file" name="file" class="form-control-file" id="input-file" hidden="hidden" />
+          <button type="button" id="custom-button"> <b> Choose a crowd </b> </button>
+          
+
+        <p>Click on count to get predictions</p>
+        <button class="btn btn-primary btn-sm" type="submit" id="upload-file" hidden="hidden">Upload</button>
+        <a class="gradient-button" id="fancy-button">Count</a>
+        
+       
+        <p>By: <a href="https://abhishekmamdapure.github.io/">Abhishek Mamdapure</a></p>
+        
+        <p>Original CSRNet Paper: <a href="https://arxiv.org/pdf/1802.10062.pdf">CSRNet</a></p>
+
+        <script type="text/javascript">
+            const realFileBtn = document.getElementById("input-file");
+            const customBtn = document.getElementById("custom-button");
+            const customTxt = document.getElementById("custom-text");
+
+            let checkSize = function(threshold) {
+              const file_size_raw = realFileBtn.files.item(0).size;
+              const file_size = Math.round((file_size_raw / 1024));
+              return file_size < threshold;
+            };
+
+            customBtn.addEventListener("click", function() {
+                realFileBtn.click();
+            });
+
+            realFileBtn.addEventListener("change", function() {
+                // Check file size
+                if (realFileBtn.files.length > 0) {
+                  if (!checkSize(4000)) {
+                    alert("File exceeds maximum memory allowance of 4MB.");
+                    realFileBtn.value = "";
+                  } else {
+                    // Check extensions
+                    let ext = realFileBtn.value.split('.').pop();
+                    if (ext != "jpg" && ext != "jpeg") {
+                      alert("Invalid file type: " + ext + ". File must be either .png or .jpg or .jpeg formats");
+                      realFileBtn.value = "";
+                    } else {
+                      customTxt.innerHTML = "Crowd Image: " + realFileBtn.value.match(/[\/\\]([\w\d\s.\=\(\)]+)$/)[1];
+                    }
+                  }
+                } else {
+                  customTxt.innerHTML = "Image must be under 100kb";
+                }
+            });
+
+
+            const fancyBtn = document.getElementById("fancy-button");
+            const uploadBtn = document.getElementById("upload-file");
+
+            fancyBtn.addEventListener("click", function() {
+                if (realFileBtn.files.length > 0) {
+                  uploadBtn.click();
+                } else {
+                  alert("No file uploaded.")
+                }
+            });
+        </script>
+
+
+    </form>
+  </div>
+
+  </body>
+
+</html>
