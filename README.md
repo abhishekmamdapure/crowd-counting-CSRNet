@@ -27,3 +27,10 @@ git clone https://github.com/abhishekmamdapure/crowd-counting-CERNet.git
   ```
 
 - head to your browser and enter address as ```  http://127.0.0.1:5000/ ``` and you will see the page as shown in the snapshot. 
+
+
+
+### Refrences 
+- [Research Paper](https://arxiv.org/pdf/1802.10062.pdf)
+- [Medium Article by Charlie Mackie](https://towardsdatascience.com/deploy-a-crowd-size-estimator-with-pytorch-size-ai-580903a101a5)
+
