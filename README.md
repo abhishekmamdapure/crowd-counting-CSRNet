@@ -30,7 +30,7 @@ git clone https://github.com/abhishekmamdapure/crowd-counting-CERNet.git
 
 
 
-### Refrences 
+### References 
 - [Research Paper](https://arxiv.org/pdf/1802.10062.pdf)
 - [Medium Article by Charlie Mackie](https://towardsdatascience.com/deploy-a-crowd-size-estimator-with-pytorch-size-ai-580903a101a5)
 
