@@ -7,6 +7,7 @@ Check out some snapshots of the project that is implemented.
 
 > This project aims to estimate the count of the crowd using CSRNet model. 
 
+- you can download the Shanghai dataset [here](https://www.kaggle.com/tthien/shanghaitech)
 - get the repository to your local machine 
 
 ```git
