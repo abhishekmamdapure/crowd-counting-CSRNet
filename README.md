@@ -1,4 +1,4 @@
-# crowd-counting-CERNet
+# crowd-counting-CSRNet
 
 Check out some snapshots of the project that is implemented. 
 
